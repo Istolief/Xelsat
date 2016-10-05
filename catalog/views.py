@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Product, Category
+from django.shortcuts import render
+from .models import Product, Category, Brand
 # from django.utils import timezone
 
 
@@ -27,6 +27,15 @@ def product_list(request, top_category='', category='', brand=''):
     else:
         products = Product.objects.all().order_by('title')
 
+    b = get_brands(products)
+    return render(request, 'catalog/catalog_list.html', {
+        'products': products,
+        'catalog': get_catalog(),
+        'brands': b,
+    })
+
+
+def get_catalog():
     # todo: Скорее всего не правильно, запросы в цикле, должна быть возможность получить дерево одним запросом
     qs = Category.objects.filter(owner__id__exact=None)
     category_list = []
@@ -38,5 +47,9 @@ def product_list(request, top_category='', category='', brand=''):
             'owner': e.title,
             'items': Category.objects.filter(owner__exact=e).order_by('title'),
         })
+    return category_list
 
-    return render(request, 'catalog/catalog_list.html', {'products': products, 'catalog': category_list})
+
+def get_brands(products):
+    return Brand.objects.filter(id__in=products.values('brand_id').distinct())
+

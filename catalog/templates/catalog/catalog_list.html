@@ -46,8 +46,9 @@
                 <div class="sort col-lg-6 col-md-6">
                     <span>Sort by brands:</span>
                     <select class="selectpicker" data-live-search="true">
-                          <option>IRT Technologies</option>
-                          <option>EndRun Technoligies</option>
+                        {% for brand in brands %}
+                        <option>{{ brand }}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -77,12 +78,11 @@
             <!--}Catalog -->
         </div>
         <div class="brands col-lg-1 col-md-1">
+            {% for brand in brands %}
             <div class="brand-box-small">
-                <img src="{% static 'images/partners/partner3.png' %}" alt="" width="33" height="33">
+                <img src="{{ brand.img.url }}" alt="" width="33" height="33">
             </div>
-            <div class="brand-box-small">
-                <img src="{% static 'images/partners/partner5.png' %}" alt="" width="68" height="28">
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
