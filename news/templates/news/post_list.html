@@ -1,0 +1,74 @@
+{% extends 'xelsat_site/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="product-bg">
+   <img src="{% static 'images/news-bg.png' %}" alt="">
+   <div class="product-bg-info">
+       <h1>news and events</h1>
+   </div>
+</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            <div class="sidebar-news">
+             <div class="sidebar-block">
+               <div class="sidebar-heading">Category</div>
+               <div class="sidebar-info">
+                 <ul class="category-list">
+                   <li><a href="{% url 'post_news' %}">News <span>({{ category.news }})</span></a></li>
+                   <li><a href="{% url 'post_events' %}">Events <span>({{ category.events }})</span></a></li>
+                 </ul>
+                 <div class="sidebar-all"><a href="{% url 'post_list' %}">Show all</a></div>
+               </div>
+             </div>
+             <div class="sidebar-block">
+               <div class="sidebar-heading">Monthly archives</div>
+               <div class="sidebar-info">
+                 <ul class="archives-list">
+                   <li><a href="">July 2016</a></li>
+                   <li><a href="">June 2016</a></li>
+                   <li><a href="">May 2016</a></li>
+                   <li><a href="">April 2016</a></li>
+                 </ul>
+               </div>
+             </div>
+            </div>
+            </div>
+            <div class="col-md-9">
+           <div class="content-news">
+               {% for post in posts %}
+               <div class="news-block">
+                    <div class="news-heading">
+                      <span class="like"></span>
+                      <span class="date">
+                          <!--todo: Привести в верхнеий регистр  -->
+                          {{ post.published_date|date:"M" }}
+                          <br>
+                          {{ post.published_date|date:"y" }}
+                      </span>
+                      <span>{{ post.title }}</span>
+                    </div>
+                    <div class="news-info">
+                         <ul class="news-links">
+                           <li><a href="">{{ post.author }}</a></li>
+                           <li><a href="">news</a></li>
+                           <li><a href="">no comments</a></li>
+                         </ul>
+                         <div class="news-img">
+                           <img src="{{ post.img.url }}" alt="">
+                         </div>
+                         <div class="news-info-heading">{{ post.lead }}</div>
+                         <p>{{ post.text|linebreaksbr }}</p>
+                    </div>
+               </div>
+               {% endfor %}
+           </div>
+         </div>
+        </div>
+    </div>
+
+{% endblock content %}
+

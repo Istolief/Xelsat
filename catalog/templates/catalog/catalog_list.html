@@ -1,0 +1,91 @@
+{% extends 'xelsat_site/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="product-bg">
+   <img src="{% static 'images/product-bg.png' %}" alt="">
+   <div class="product-bg-info">
+       <h1>SATELLITE COMMUNICATIONS</h1>
+       <div class="product-bg-description">Xelsat offers products of worldwide known suppliers of satellite communication</div>
+   </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="sidebar col-lg-3 col-md-3">
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+              {% for item in catalog %}
+
+              <div class="panel">
+                <a class="sidebar-list collapsed" role="button" class="panel-collapse collapse" data-toggle="collapse"
+                   data-parent="#accordion" href="#collapse{{ item.iter }}" aria-expanded="false" aria-controls="collapse{{ item.iter }}">
+                {{ item.owner }}
+                </a>
+                <ul class="panel-collapse collapse brands-list" id="collapse{{ item.iter }}" role="tabpanel">
+                    {% for category in item.items %}
+                    <li><a href="{% url 'product_list' %}category/{{ category.slug }}/">{{ category }}</a></li>
+                    {% endfor %}
+                </ul>
+              </div>
+
+              {% endfor %}
+            <div class="panel">
+                <a class="sidebar-list sidebar-list-empty" href="{% url 'product_list' %}">
+                VIEW ALL PRODUCTS
+                </a>
+            </div>
+          </div>
+        </div>
+        <div class="content col-lg-8 col-md-8 catalog">
+            <!--Catalog{ -->
+            <div class="row">
+                <ul class="breadcrumbs col-lg-6 col-md-6">
+                  <li><a href="#">BUCs</a></li>
+                  <li>C Band</li>
+                </ul>
+                <div class="sort col-lg-6 col-md-6">
+                    <span>Sort by brands:</span>
+                    <select class="selectpicker" data-live-search="true">
+                          <option>IRT Technologies</option>
+                          <option>EndRun Technoligies</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+
+                {% for product in products %}
+                <div class="col-lg-4 col-md-4">
+                    <div class="item">
+                        <div class="product-image-size">
+                        <img src="{{ product.img.url }}" alt="">
+                        </div>
+                        <h4 class="item-heading"><a href="">{{ product.title }}</a></h4>
+                        <div class="item-description">{{ product.description }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 show-more-wrapper">
+                    <button class="show-more btn-default">Show more</button>
+                </div>
+            </div>
+            <!--}Catalog -->
+        </div>
+        <div class="brands col-lg-1 col-md-1">
+            <div class="brand-box-small">
+                <img src="{% static 'images/partners/partner3.png' %}" alt="" width="33" height="33">
+            </div>
+            <div class="brand-box-small">
+                <img src="{% static 'images/partners/partner5.png' %}" alt="" width="68" height="28">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
