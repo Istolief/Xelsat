@@ -1,0 +1,85 @@
+{% load staticfiles %}
+
+
+  <div class="header-top">
+             <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="logo"><a href="/">Xelsat</a></div>
+                        <div class="header-top-nav">
+                            <ul class="nav-list">
+                                <li><a href="/contact-us">Contact us</a></li>
+                                <li><a href="">About us</a></li>
+                                <li><a href="">Login</a></li>
+                            </ul>
+                            <ul class="social-list">
+                                <li><a href=""></a></li>
+                                <li><a href=""></a></li>
+                                <li><a href=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+<div id="sticky-header" class="header-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                 <ul class="header-bottom-nav">
+                    <li class="first-link"><a href="#">Why Xelsat?</a></li>
+                    <li><a class="for-dropdown" href="{% url 'product_list' %}">Products & Services</a></li>
+                    <li class="third-link"><a href="#">Custom solution</a></li>
+                 </ul>
+    <a class="search" role="button" data-toggle="collapse" href="#collapseSearch" aria-expanded="false" aria-controls="collapseSearch"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="collapse colSearch" id="collapseSearch">
+    <form action="">
+       <span><input type="search" class="search-field">
+       <button type="submit" class="search-submit white-button">Search</button></span>
+    </form>
+</div>
+<div class="dropdown" id="dropdown">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3">
+              <ul>
+                <li class="for-satellite-drop"><a href="">Satellite Communications</a></li>
+                <li class="for-networks-drop"><a href="">Networks</a></li>
+                <li><a href="">RF & Microwave</a></li>
+                <li><a href="">Internet of Things</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3">
+              <ul class="satellite-drop">
+                <li class="for-bucs-drop"><a href="">BUCs</a></li>
+                <li><a href="">LNB</a></li>
+                <li><a href="">Amplifiers</a></li>
+                <li><a href="">Transceivers</a></li>
+              </ul>
+              <ul class="networks-drop">
+                <li><a href="">Example</a></li>
+                <li><a href="">Example</a></li>
+                <li><a href="">Example</a></li>
+                <li><a href="">Example</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3">
+              <ul class="bucs-drop">
+                <li class="for-converters-drop"><a href="">Up/Down Converters</a></li>
+                <li><a href="">Modems</a></li>
+                <li><a href="">VSAT Systems</a></li>
+                <li><a href="">Test Equipment</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 last-ul">
+              <ul class="converters-drop">
+                <li><a href="">Used Equipment</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
