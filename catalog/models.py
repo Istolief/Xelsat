@@ -15,7 +15,7 @@ class Product(models.Model):
 class Brand(models.Model):
     title = models.CharField(max_length=200)
     img = models.FileField(upload_to='brand_img', default='None')
-    slug = models.SlugField(verbose_name='URL', default='')  # todo: проверить slug должен быть уникальным
+    slug = models.SlugField(default='')  # todo: проверить slug должен быть уникальным
 
     def __str__(self):
         return self.title
@@ -23,7 +23,7 @@ class Brand(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.SlugField(verbose_name='URL', default='')  # todo: проверить slug должен быть уникальным
+    slug = models.SlugField(default='')  # todo: проверить slug должен быть уникальным
     owner = models.ForeignKey('catalog.Category', null=True, blank=True)
 
     def __str__(self):
